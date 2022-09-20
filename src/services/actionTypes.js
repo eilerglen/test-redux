@@ -1,0 +1,14 @@
+export const ADD_TODO = " ADD_TODO";
+export const REMOVE_TODO = "REMOVE_TODO";
+export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
+export const TOGGLE_TODO = "TOGGLE_TODO";
+export const ADD_CUSTOMER = 'ADD_CUSTOMER'
+export const ADD_CUSTOMERS = 'ADD_CUSTOMERS'
+export const REMOVE_CUSTOMERS = 'REMOVE_CUSTOMERS'
+
+
+export const VisibilityFilter = {
+  SHOW_ALL: 'SHOW_ALL',
+  SHOW_COMPLETED: 'SHOW_COMPLETED',
+  SHOW_ACTIVE: 'SHOW_ACTIVE',
+}
