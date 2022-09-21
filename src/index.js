@@ -4,15 +4,16 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import todoApp from "../src/services/index";
-import { addTodo, setVisibilityFilter, toggleTodo } from "./services/actions";
+import rootReducer from "../src/services/index";
+import { addTodo, setVisibilityFilter, toggleTodo, fetchCustomers } from "./services/actions";
 import { VisibilityFilter } from "./services/actionTypes";
 import thunk from 'redux-thunk'
 
 // let store = createStore(todoApp, applyMiddleware(thunk));
 
-  let store = createStore(todoApp, );
-  store.dispatch(addTodo('Learn about actions'));
+  let store = createStore(rootReducer, applyMiddleware(thunk));
+
+  console.log(store.dispatch(fetchCustomers()))
 
 
   function logger(store) {
@@ -66,8 +67,8 @@ import thunk from 'redux-thunk'
     // Для каждого мидлвара мы вызываем функцию - усилитель хранилища дважды доходя до диспатч
     middlewares.forEach(middleware => {
       dispatch = middleware(store)(dispatch)
-      console.log(middleware)
-      console.log(dispatch)
+      // console.log(middleware)
+      // console.log(dispatch)
     }
 
     );
@@ -76,7 +77,9 @@ import thunk from 'redux-thunk'
 
   const whatIs = customApplyMiddleware(store,[arrowCarryLogger, arrowCrahsReporter])
   whatIs.dispatch(addTodo('Yohyy'))
-  console.log(whatIs.getState())
+  // console.log(whatIs.getState())
+
+
 
   
   // function applyMiddlewareByMonkeyPatching(store, middlewares) {

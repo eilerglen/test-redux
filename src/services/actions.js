@@ -4,7 +4,7 @@ import {
   TOGGLE_TODO,
   SET_VISIBILITY_FILTER,
   ADD_CUSTOMER,
-  ADD_CUSTOMERS,
+  ADD_MANY_CUSTOMERS,
   REMOVE_CUSTOMERS,
 } from "./actionTypes";
 
@@ -38,12 +38,8 @@ export const addCustomerAction  = (payload) => {
   }
 }
 
-export const addManyCustomersAction  = (payload) => {
-  return {
-    type:  ADD_CUSTOMERS, payload
-  }
-}
-
+export const addManyCustomersAction  = (payload) => ({ type:  ADD_MANY_CUSTOMERS, payload})
+ 
 export const removeCustomersAction  = (payload) => {
   return {
     type: REMOVE_CUSTOMERS, payload
@@ -53,7 +49,7 @@ export const removeCustomersAction  = (payload) => {
 
 export const fetchCustomers = () => {
   return function (dispatch) {
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((json) => dispatch(addManyCustomersAction(json)));
   };

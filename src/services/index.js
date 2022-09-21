@@ -10,10 +10,10 @@ import { customersReducer } from "./customersReducer";
   //     }
   // }
 
-  export const todoApp = combineReducers({
+  export const rootReducer = combineReducers({
     todoReducer,
     visibleReducer,
     customersReducer,
   })
 
-export default todoApp
+export default rootReducer

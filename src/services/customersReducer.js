@@ -1,6 +1,6 @@
 import {
   ADD_CUSTOMER,
-  ADD_CUSTOMERS,
+  ADD_MANY_CUSTOMERS,
   REMOVE_CUSTOMERS
 } from '../services/actionTypes'
 
@@ -11,7 +11,7 @@ const initialState = {
 
 export function customersReducer (state=initialState, action) {
   switch (action.type) {
-    case ADD_CUSTOMERS: 
+    case ADD_MANY_CUSTOMERS: 
       return {
         ...state,
         customers: [...state.customers, ...action.payload]
