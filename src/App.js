@@ -1,22 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  asyncIncrementCreator,
+  asyncDecrementCreator,
+} from "../src/services/countReducer";
+import { fetchUsers } from "../src/services/userReducer";
+import style from "./style.css";
 
 function App() {
+  const count = useSelector((state) => state.countReducer.count);
+  const users = useSelector((state) => state.userReducer.users);
+  const dispatch = useDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="app">
+      <div className="count">{count}</div>
+      <div className="btns">
+        <button
+          className="btn"
+          onClick={() => dispatch(asyncIncrementCreator())}
         >
-          Learn React
-        </a>
-      </header>
+          ИНКРЕМЕНТ++
+        </button>
+        <button
+          className="btn"
+          onClick={() => dispatch(asyncDecrementCreator())}
+        >
+          ДЕКРЕМЕНТ--
+        </button>
+        <button className="btn" onClick={() => dispatch(fetchUsers())}>
+          ПОЛУЧИТЬ ЮЗЕРОВ--
+        </button>
+      </div>
+      <ul className="users">
+        {users.map((user) => (
+          <li key = {user.id} className="user">{user.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
